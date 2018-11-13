@@ -30,6 +30,7 @@
 #include "playerbot.h"
 #endif
 
+/* Судя по всему из за этой хуйни нельзя писать по русски
 inline bool isNasty(char c)
 {
     if (c == '\t')
@@ -38,6 +39,7 @@ inline bool isNasty(char c)
         return true;
     return false;
 }
+*/
 
 void WorldSession::SendPlayerNotFoundNotice(std::string const& name)
 {
@@ -244,6 +246,8 @@ void WorldSession::HandleMessagechatOpcode( WorldPacket & recvData )
             msg.erase(pos);
 
         // abort on any sort of nasty character
+        /* Судя по всему из за этой хуйни нельзя писать по русски
+
         for (uint8 c : msg)
             if (isNasty(c))
             {
@@ -251,6 +255,7 @@ void WorldSession::HandleMessagechatOpcode( WorldPacket & recvData )
                     GetPlayer()->GetGUID().GetCounter(), uint8(c));
                 return;
             }
+        */
 
         // validate utf8
         if (!utf8::is_valid(msg.begin(), msg.end()))
